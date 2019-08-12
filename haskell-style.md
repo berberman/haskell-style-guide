@@ -1,24 +1,24 @@
-Haskell Style Guide
+Haskell 风格指南
 ===================
 
-This is a short document describing the preferred coding style for
-this project.  I've tried to cover the major areas of formatting and
-naming.  When something isn't covered by this guide you should stay
-consistent with the code in the other modules.
+本文是一个简短的文档，用于描述项目首选的代码风格。
+作者尝试涵盖主要的格式及命名，如果该指南中未出现
+某些内容时，你应该与其他模块的代码
+保持一致。
 
-Formatting
+格式化
 ----------
 
-### Line Length
+### 行长
 
-Maximum line length is *80 characters*.
+最大行长为*80 字符*。
 
-### Indentation
+### 缩进
 
-Tabs are illegal.  Use spaces for indenting.  Indent your code blocks
-with *4 spaces*.  Indent the `where` keyword two spaces to set it
-apart from the rest of the code and indent the definitions in a
-`where` clause 2 spaces.  Some examples:
+Tab 是不合法的，应当使用空格。用*4 个空格* 来缩进代码块。
+缩进 `where` 关键字两个空格，将其与
+代码的其余部分分开，并且
+缩进 `where` 子句定义四个空格。一些例子：
 
 ```haskell
 sayHello :: IO ()
@@ -35,30 +35,30 @@ filter p (x:xs)
     | otherwise = filter p xs
 ```
 
-### Blank Lines
+### 空行
 
-One blank line between top-level definitions.  No blank lines between
-type signatures and function definitions.  Add one blank line between
-functions in a type class instance declaration if the function bodies
-are large.  Use your judgement.
+顶层定义间应该空一行。
+函数类型签名和定义间不应该空行。
+类型类实例中的函数体如果很大，这些函数定义之间应该空行。
+具体情况自行判断~
 
-### Whitespace
+### 空格
 
-Surround binary operators with a single space on either side.  Use
-your better judgement for the insertion of spaces around arithmetic
-operators but always be consistent about whitespace on either side of
-a binary operator.  Don't insert a space after a lambda.
+二元运算符的左右两侧都应空一格。
+对于算术运算符周围的空格可以自行判断，
+不过需要保证左右两边空格相等。
+不要在 lambda 后面插入空格。
 
-### Data Declarations
+### 数据声明
 
-Align the constructors in a data type definition.  Example:
+对齐数据类型定义中的构造器。举个例子：
 
 ```haskell
 data Tree a = Branch !a !(Tree a) !(Tree a)
             | Leaf
 ```
 
-For long type names the following formatting is also acceptable:
+对于很长的类型名，以下格式也可是以的：
 
 ```haskell
 data HttpException
@@ -66,7 +66,7 @@ data HttpException
     | MissingContentHeader
 ```
 
-Format records as follows:
+记录语法应遵照如下格式：
 
 ```haskell
 data Person = Person
@@ -76,9 +76,9 @@ data Person = Person
     } deriving (Eq, Show)
 ```
 
-### List Declarations
+### 列表定义
 
-Align the elements in the list.  Example:
+对齐列表中的每个元素。举个例子：
 
 ```haskell
 exceptions =
@@ -88,7 +88,7 @@ exceptions =
     ]
 ```
 
-Optionally, you can skip the first newline.  Use your judgement.
+你也可以跳过首行，具体情况自行判断。
 
 ```haskell
 directions = [ North
@@ -98,10 +98,10 @@ directions = [ North
              ]
 ```
 
-### Pragmas
+### 编译指示
 
-Put pragmas immediately following the function they apply to.
-Example:
+将编译指示放在它们应用的函数之后。
+例子：
 
 ```haskell
 id :: a -> a
@@ -109,8 +109,8 @@ id x = x
 {-# INLINE id #-}
 ```
 
-In the case of data type definitions you must put the pragma before
-the type it applies to.  Example:
+数据类型定义时，编译指示需要放在类型之前。
+例子：
 
 ```haskell
 data Array e = Array
@@ -135,9 +135,9 @@ foo = alloca 10 $ \a ->
       cFunction a b
 ```
 
-### Export Lists
+### 导出清单：
 
-Format export lists as follows:
+按照如下格式化导出清单：
 
 ```haskell
 module Data.Set
@@ -152,15 +152,15 @@ module Data.Set
     ) where
 ```
 
-### If-then-else clauses
+### If-then-else 子句
 
-Generally, guards and pattern matches should be preferred over if-then-else
-clauses, where possible.  Short cases should usually be put on a single line
-(when line length allows it).
+通常情况下，如果可能的话模式匹配和守卫模式应该优先考虑，而不是 if-then-else 子句。
+较短的分支通常应该放在一行
+（如果行长允许的话）。
 
-When writing non-monadic code (i.e. when not using `do`) and guards
-and pattern matches can't be used, you can align if-then-else clauses
-like you would normal expressions:
+当编写非单子风格代码（换句话说没有用 `do`) 并且没有用守卫模式或
+模式匹配时，你可以像正常表达式一样
+l把 if-then-else 子句对齐：
 
 ```haskell
 foo = if ...
@@ -168,8 +168,8 @@ foo = if ...
       else ...
 ```
 
-Otherwise, you should be consistent with the 4-spaces indent rule, and the
-`then` and the `else` keyword should be aligned.  Examples:
+否则，你应该与四空格缩进法则保持一致，并且
+`then` 和 `else` 关键字应该对齐。例子：
 
 ```haskell
 foo = do
@@ -185,7 +185,7 @@ foo = bar $ \qux -> if predicate qux
     else someOtherCode
 ```
 
-The same rule applies to nested do blocks:
+同样的规则适用于嵌套的 do 块：
 
 ```haskell
 foo = do
@@ -200,10 +200,10 @@ foo = do
             addCycles 1
 ```
 
-### Case expressions
+### Case 表达式
 
-The alternatives in a case expression can be indented using either of
-the two following styles:
+case 表达式中的分支可以
+使用两种缩进样式的任何一种：
 
 ```haskell
 foobar = case something of
@@ -211,7 +211,7 @@ foobar = case something of
     Nothing -> bar
 ```
 
-or as
+或者这样
 
 ```haskell
 foobar = case something of
@@ -219,7 +219,7 @@ foobar = case something of
              Nothing -> bar
 ```
 
-Align the `->` arrows when it helps readability.
+对齐 `->` 箭头可以提高可读性。
 
 Imports
 -------
