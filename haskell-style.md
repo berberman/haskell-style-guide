@@ -1,10 +1,10 @@
 Haskell 风格指南
 ===================
 
-本文是一个简短的文档，用于描述项目首选的代码风格。
-作者尝试涵盖主要的格式及命名，如果该指南中未出现
-某些内容时，你应该与其他模块的代码
-保持一致。
+本文是一个简短的文档，用于描述项目首选的代码风格。<!--
+-->作者尝试涵盖主要的格式及命名，如果该指南中未出现<!--
+-->某些内容时，你应该与其他模块的代码<!--
+-->保持一致。
 
 格式化
 ----------
@@ -15,10 +15,10 @@ Haskell 风格指南
 
 ### 缩进
 
-Tab 是不合法的，应当使用空格。用*4 个空格* 来缩进代码块。
-缩进 `where` 关键字两个空格，将其与
-代码的其余部分分开，并且
-缩进 `where` 子句定义四个空格。一些例子：
+Tab 是不合法的，应当使用空格。用 *4 个空格* 来缩进代码块。<!--
+-->缩进 `where` 关键字两个空格，将其与<!--
+-->代码的其余部分分开，并且<!--
+-->缩进 `where` 子句定义四个空格。一些例子：
 
 ```haskell
 sayHello :: IO ()
@@ -37,17 +37,17 @@ filter p (x:xs)
 
 ### 空行
 
-顶层定义间应该空一行。
-函数类型签名和定义间不应该空行。
-类型类实例中的函数体如果很大，这些函数定义之间应该空行。
-具体情况自行判断~
+顶层定义间应该空一行。<!--
+-->函数类型签名和定义间不应该空行。<!--
+-->类型类实例中的函数体如果很大，这些函数定义之间应该空行。<!--
+-->具体情况自行判断~
 
 ### 空格
 
-二元运算符的左右两侧都应空一格。
-对于算术运算符周围的空格可以自行判断，
-不过需要保证左右两边空格相等。
-不要在 lambda 后面插入空格。
+二元运算符的左右两侧都应空一格。<!--
+-->对于算术运算符周围的空格可以自行判断，<!--
+-->不过需要保证左右两边空格相等。<!--
+-->不要在 lambda 后面插入空格。
 
 ### 数据声明
 
@@ -120,8 +120,8 @@ data Array e = Array
 
 ### Hanging Lambdas
 
-You may or may not indent the code following a "hanging" lambda.  Use
-your judgement.  Some examples:
+在“悬挂”的 lambda 后的代码是否缩进均可，请自行判断。
+一些例子：
 
 ```haskell
 bar :: IO ()
@@ -154,13 +154,13 @@ module Data.Set
 
 ### If-then-else 子句
 
-通常情况下，如果可能的话模式匹配和守卫模式应该优先考虑，而不是 if-then-else 子句。
-较短的分支通常应该放在一行
-（如果行长允许的话）。
+通常情况下，如果可能的话模式匹配和守卫模式应该优先考虑，而不是 if-then-else 子句。<!--
+-->较短的分支通常应该放在一行<!--
+-->（如果行长允许的话）。
 
-当编写非单子风格代码（换句话说没有用 `do`) 并且没有用守卫模式或
-模式匹配时，你可以像正常表达式一样
-l把 if-then-else 子句对齐：
+当编写非单子风格代码（换句话说没有用 `do`）并且没有用守卫模式或<!--
+-->模式匹配时，你可以像正常表达式一样<!--
+-->把 if-then-else 子句对齐：
 
 ```haskell
 foo = if ...
@@ -168,8 +168,8 @@ foo = if ...
       else ...
 ```
 
-否则，你应该与四空格缩进法则保持一致，并且
-`then` 和 `else` 关键字应该对齐。例子：
+否则，你应该与四空格缩进法则保持一致，并且<!--
+-->`then` 和 `else` 关键字应该对齐。例子：
 
 ```haskell
 foo = do
@@ -202,8 +202,8 @@ foo = do
 
 ### Case 表达式
 
-case 表达式中的分支可以
-使用两种缩进样式的任何一种：
+case 表达式中的分支可以<!--
+-->使用两种缩进样式的任何一种：
 
 ```haskell
 foobar = case something of
@@ -221,35 +221,35 @@ foobar = case something of
 
 对齐 `->` 箭头可以提高可读性。
 
-Imports
+导入
 -------
 
-Imports should be grouped in the following order:
+导入应按以下顺序分组：
 
-1. standard library imports
-2. related third party imports
-3. local application/library specific imports
+1. 标准库的导入
+2. 相关第三方的导入
+3. 本地应用程序/库的特定导入
 
-Put a blank line between each group of imports.  The imports in each
-group should be sorted alphabetically, by module name.
+在每组导入间插入一个空行。<!--
+-->每组的导入应该按照模块名的字母顺序排序。
 
-Always use explicit import lists or `qualified` imports for standard
-and third party libraries.  This makes the code more robust against
-changes in these libraries.  Exception: The Prelude.
+对于标准库和第三方的库应使用 `qualified` 导入，<!--
+-->以便代码在库变动时更加健壮。<!--
+-->例外：Prelude。
 
-Comments
+注释
 --------
 
-### Punctuation
+### 标点
 
-Write proper sentences; start with a capital letter and use proper
-punctuation.
+书写正确的句子；以大写字母开头，<!--
+-->使用正确标点。
 
-### Top-Level Definitions
+### 顶层定义
 
-Comment every top level function (particularly exported functions),
-and provide a type signature; use Haddock syntax in the comments.
-Comment every exported data type.  Function example:
+对每个顶层函数进行注释（特别是要进行导出的），<!--
+-->并且提供类型签名；在注释中使用 Haddock 句法。<!--
+-->注释每个将要导出的数据类型。关于函数的例子：
 
 ```haskell
 -- | Send a message on a socket.  The socket must be in a connected
@@ -260,10 +260,10 @@ send :: Socket      -- ^ Connected socket
      -> IO Int      -- ^ Bytes sent
 ```
 
-For functions the documentation should give enough information to
-apply the function without looking at the function's definition.
+对于函数，文档应给出足够的信息，以便在能够在不看函数的<!--
+-->定义时使用函数。
 
-Record example:
+关于记录语法的例子：
 
 ```haskell
 -- | Bla bla bla.
@@ -273,24 +273,24 @@ data Person = Person
     }
 ```
 
-For fields that require longer comments format them like so:
+对于需要较长注释的字段，请按如下格式进行注释：
 
 ```haskell
 data Record = Record
-    { -- | This is a very very very long comment that is split over
-      -- multiple lines.
+    { -- | 这是一个非常非常非常长的注释，
+      -- 分成了许多行。
       field1 :: !Text
 
-      -- | This is a second very very very long comment that is split
-      -- over multiple lines.
+      -- | 这又是一个非常非常非常长的注释，
+      -- 分成了许多行。
     , field2 :: !Int
     }
 ```
 
-### End-of-Line Comments
+### 行尾注释
 
-Separate end-of-line comments from the code using 2 spaces.  Align
-comments for data type definitions.  Some examples:
+使用两个空格将行尾注释与代码分开。将数据类型的注释<!--
+-->对齐。一些例子：
 
 ```haskell
 data Parser = Parser
